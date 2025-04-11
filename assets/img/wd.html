@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Biscuit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .logo-bracket {
+            color: #f9925a;
+            margin-right: 5px;
+            font-size: 24px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #f9925a;
+        }
+        
+        .quote-btn {
+            background-color: #0c7bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .quote-btn:hover {
+            background-color: #0058c6;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 50px 0;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background-color: #f0f5ff;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .hero-img {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-img img {
+            max-width: 100%;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .get-started-btn {
+            background-color: #0c7bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .get-started-btn:hover {
+            background-color: #0058c6;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+        }
+        
+        .services h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        
+        .service-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 250px;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+        }
+        
+        .web-icon, .mobile-icon {
+            color: #0c7bff;
+            font-size: 40px;
+        }
+        
+        .ux-icon {
+            color: #f9925a;
+            font-size: 40px;
+        }
+        
+        .service-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .service-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        /* Color modifications for the requested scheme */
+        .hero {
+            background: linear-gradient(45deg, rgba(249, 146, 90, 0.1), rgba(249, 146, 90, 0.05));
+        }
+        
+        .quote-btn, .get-started-btn {
+            background-color: #f9925a;
+            color: white;
+        }
+        
+        .quote-btn:hover, .get-started-btn:hover {
+            background-color: #e67f4a;
+        }
+        
+        .web-icon, .mobile-icon, .ux-icon {
+            color: #444;
+        }
+
+        /* Code window styles in hero section */
+        .code-window {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 220px;
+            margin-right: 10px;
+        }
+
+        .window-header {
+            background-color: #f9925a;
+            padding: 8px;
+            display: flex;
+        }
+
+        .window-dot {
+            height: 10px;
+            width: 10px;
+            background-color: white;
+            border-radius: 50%;
+            margin-right: 5px;
+            opacity: 0.7;
+        }
+
+        .window-content {
+            padding: 15px;
+            background-color: white;
+        }
+
+        .code-text {
+            color: #333;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .settings-window {
+            background-color: #f9925a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 220px;
+        }
+
+        .settings-content {
+            padding: 15px;
+        }
+
+        .settings-line {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .hero-illustration {
+            display: flex;
+            position: relative;
+        }
+
+        .dev-character {
+            position: absolute;
+            bottom: -30px;
+            left: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .service-cards {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo-bracket">&lt;&gt;</span> Software
+                </div>
+                <div class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Contact</a>
+                    <button class="quote-btn">Get a Quote</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-img">
+                <div class="hero-illustration">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-dot"></div>
+                            <div class="window-dot"></div>
+                            <div class="window-dot"></div>
+                        </div>
+                        <div class="window-content">
+                            <div class="code-text">
+                                &lt;/&gt;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-window">
+                        <div class="window-header">
+                            <div class="window-dot"></div>
+                            <div class="window-dot"></div>
+                            <div class="window-dot"></div>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-line"></div>
+                            <div class="settings-line"></div>
+                            <div class="settings-line"></div>
+                        </div>
+                    </div>
+                    <img src="/api/placeholder/250/200" alt="Developer" class="dev-character">
+                </div>
+            </div>
+            <div class="hero-content">
+                <h1>Building Digital Solutions</h1>
+                <p>We design and develop software solutions to help businesses succeed in the digital world.</p>
+                <button class="get-started-btn">Get Started</button>
+            </div>
+        </section>
+
+        <section class="services">
+            <h2>Our Services</h2>
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="web-icon">&lt;/&gt;</div>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Building responsive and scalable websites</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="mobile-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Mobile Development</h3>
+                    <p>Creating user-friendly mobile applications</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="ux-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Designing intuitive and engaging user interfaces</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
